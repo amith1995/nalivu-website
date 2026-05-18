@@ -75,7 +75,7 @@ export default function DonatePage() {
           <div>
             <h3 className="text-lg font-semibold text-ngo-dark mb-4">Your Impact</h3>
             <div className="p-4 bg-white rounded-lg border border-ngo-green text-ngo-text text-sm leading-relaxed italic">
-              "{impacts[amount]}"
+              &quot;{impacts[amount]}&quot;
             </div>
           </div>
 

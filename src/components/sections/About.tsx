@@ -13,7 +13,7 @@ export default function About() {
           <h2 className="text-3xl font-semibold text-ngo-dark mb-4">Dedicated to rural development and social equity.</h2>
           <p className="text-ngo-text leading-relaxed mb-8">
             Nalivu focuses on holistic community growth by addressing the root causes of poverty. 
-            We don't just provide aid; we build systems that enable communities to thrive independently.
+            We don&apos;t just provide aid; we build systems that enable communities to thrive independently.
           </p>
         </div>
         <div className="bg-ngo-lightGreen h-72 rounded-2xl flex items-center justify-center text-ngo-green font-medium">

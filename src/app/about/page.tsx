@@ -219,7 +219,7 @@ export default function AboutPage() {
               <h3 className="text-sm font-semibold text-ngo-dark mb-1">{founder.name}</h3>
               <div className="text-[10px] font-bold text-gray-400 uppercase mb-2">{founder.title}</div>
               <div className="text-xs font-medium text-ngo-green mb-2">{founder.role}</div>
-              <p className="text-xs text-ngo-text italic leading-relaxed">"{founder.bio}"</p>
+              <p className="text-xs text-ngo-text italic leading-relaxed">&quot;{founder.bio}&quot;</p>
             </div>
           ))}
         </div>

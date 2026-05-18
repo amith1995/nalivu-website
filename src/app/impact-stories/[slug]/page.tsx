@@ -1,5 +1,6 @@
 import { getSanityData, urlFor } from "@/lib/sanity";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { PortableText } from "@portabletext/react";
 
@@ -58,11 +59,12 @@ export default async function ImpactStoryPage({ params }: { params: { slug: stri
         ← Back to all stories
       </Link>
       
-      <div className="aspect-video rounded-2xl overflow-hidden mb-12 shadow-sm border border-gray-100">
-        <img 
+      <div className="relative aspect-video rounded-2xl overflow-hidden mb-12 shadow-sm border border-gray-100">
+        <Image 
           src={typeof displayStory.image === 'string' ? displayStory.image : urlFor(displayStory.image).url()} 
           alt={displayStory.title} 
-          className="w-full h-full object-cover" 
+          fill
+          className="object-cover" 
         />
       </div>
 
@@ -96,7 +98,7 @@ export default async function ImpactStoryPage({ params }: { params: { slug: stri
             <div className="grid gap-4">
               {displayStory.testimonials.map((t: any, i: number) => (
                 <div key={i} className="bg-ngo-background border-l-2 border-ngo-green p-6 rounded-r-2xl">
-                  <p className="text-ngo-text italic mb-3">"{t.quote}"</p>
+                  <p className="text-ngo-text italic mb-3">&quot;{t.quote}&quot;</p>
                   <div className="text-xs font-bold text-ngo-green">— {t.attr}</div>
                 </div>
               ))}

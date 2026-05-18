@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 interface HeroProps {
   imageUrl?: string;
@@ -15,10 +16,12 @@ export default function Hero({
     <section className="relative text-center py-24 px-8 overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img 
+        <Image 
           src={imageUrl} 
           alt="Sustainable Village" 
-          className="w-full h-full object-cover"
+          fill
+          className="object-cover"
+          priority
         />
         <div className="absolute inset-0 bg-ngo-background/80 backdrop-blur-sm"></div>
       </div>

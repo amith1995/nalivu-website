@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { getSanityData, urlFor } from "@/lib/sanity";
 
 const DEFAULT_STORIES = [
@@ -127,10 +128,11 @@ export default function ImpactListingPage() {
             className="bg-white border border-gray-200 rounded-2xl overflow-hidden group hover:shadow-lg transition-all duration-300"
           >
             <div className="relative aspect-[4/3] overflow-hidden">
-              <img 
+              <Image 
                 src={typeof story.image === 'string' ? story.image : urlFor(story.image).url()} 
                 alt={story.title} 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500" 
               />
             </div>
             <div className="p-6 space-y-3">

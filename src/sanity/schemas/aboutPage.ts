@@ -6,15 +6,16 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'originStory',
-      title: 'Origin Story',
+      name: 'ourStory',
+      title: 'Origin Story Section',
       type: 'object',
       fields: [
-        { name: 'label', type: 'string' },
-        { name: 'title', type: 'string' },
+        { name: 'ourStory', title: 'Our Story (Eyebrow)', type: 'string' },
+        { name: 'passageTitle', title: 'Passage Title', type: 'string' },
         { name: 'paragraphs', type: 'array', of: [{ type: 'text' }] },
         { 
-          name: 'stats', 
+          name: 'ourStoryStats', 
+          title: 'Our Story Stats',
           type: 'array', 
           of: [
             { 
@@ -28,22 +29,24 @@ export default defineType({
         },
         {
           name: 'image',
-          type: 'object',
+          title: 'Section Image',
+          type: 'image',
+          options: { hotspot: true },
           fields: [
-            { name: 'caption', type: 'string' },
-            { name: 'subCaption', type: 'string' },
-            { name: 'tag', type: 'string' }
+            { name: 'caption', title: 'Caption', type: 'string' },
+            { name: 'subCaption', title: 'Sub Caption', type: 'string' },
+            { name: 'tag', title: 'Badge Tag (e.g. the OG crew)', type: 'string' }
           ]
         }
       ]
     }),
     defineField({
       name: 'values',
-      title: 'Mission & Values',
+      title: 'Mission & Values Section',
       type: 'object',
       fields: [
-        { name: 'label', type: 'string' },
-        { name: 'title', type: 'string' },
+        { name: 'valuesLabel', title: 'Values Label (Eyebrow)', type: 'string' },
+        { name: 'passageTitle', title: 'Passage Title', type: 'string' },
         { 
           name: 'items', 
           type: 'array', 
@@ -65,8 +68,8 @@ export default defineType({
       title: 'Founders Section Header',
       type: 'object',
       fields: [
-        { name: 'label', type: 'string' },
-        { name: 'title', type: 'string' }
+        { name: 'foundersLabel', title: 'Founders Label (Eyebrow)', type: 'string' },
+        { name: 'passageTitle', title: 'Passage Title', type: 'string' }
       ]
     }),
     defineField({
@@ -102,8 +105,8 @@ export default defineType({
       title: 'Why Nalivu Section',
       type: 'object',
       fields: [
-        { name: 'label', type: 'string' },
-        { name: 'title', type: 'string' },
+        { name: 'whyNalivuLabel', title: 'Why Nalivu Label (Eyebrow)', type: 'string' },
+        { name: 'passageTitle', title: 'Passage Title', type: 'string' },
         { name: 'description', type: 'text' },
         {
           name: 'checks',

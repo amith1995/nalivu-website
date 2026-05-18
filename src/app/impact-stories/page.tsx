@@ -121,7 +121,7 @@ export default function ImpactListingPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {filteredStories.map((story, i) => (
+        {filteredStories?.map((story, i) => (
           <Link 
             key={i} 
             href={`/impact-stories/${story.slug}`}
@@ -129,15 +129,15 @@ export default function ImpactListingPage() {
           >
             <div className="relative aspect-[4/3] overflow-hidden">
               <Image 
-                src={typeof story.image === 'string' ? story.image : urlFor(story.image).url()} 
-                alt={story.title} 
+                src={typeof story.image === 'string' ? story.image : (story.image ? urlFor(story.image).url() : '/placeholder.jpg')} 
+                alt={story.title || "Impact Story"} 
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500" 
               />
             </div>
             <div className="p-6 space-y-3">
               <span className="text-[10px] tracking-widest uppercase font-bold text-ngo-green px-2 py-1 bg-ngo-lightGreen rounded-full">
-                {story.category}
+                {story.category || "General"}
               </span>
               <h3 className="text-lg font-semibold text-ngo-dark leading-tight group-hover:text-ngo-green transition-colors">
                 {story.title}

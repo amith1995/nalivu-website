@@ -61,8 +61,8 @@ export default async function ImpactStoryPage({ params }: { params: { slug: stri
       
       <div className="relative aspect-video rounded-2xl overflow-hidden mb-12 shadow-sm border border-gray-100">
         <Image 
-          src={typeof displayStory.image === 'string' ? displayStory.image : urlFor(displayStory.image).url()} 
-          alt={displayStory.title} 
+          src={typeof displayStory.image === 'string' ? displayStory.image : (displayStory.image ? urlFor(displayStory.image).url() : '/placeholder.jpg')} 
+          alt={displayStory.title || "Impact Story"} 
           fill
           className="object-cover" 
         />
@@ -71,7 +71,7 @@ export default async function ImpactStoryPage({ params }: { params: { slug: stri
       <div className="space-y-6">
         <div className="flex items-center gap-3">
           <span className="text-[10px] tracking-widest uppercase font-bold text-ngo-green px-2 py-1 bg-ngo-lightGreen rounded-full">
-            {displayStory.category}
+            {displayStory.category || "General"}
           </span>
           <span className="text-gray-300">·</span>
           <span className="text-xs text-gray-400 font-medium">{displayStory.location}</span>
@@ -87,7 +87,7 @@ export default async function ImpactStoryPage({ params }: { params: { slug: stri
             {Array.isArray(displayStory.content) ? (
               <PortableText value={displayStory.content} />
             ) : (
-              <div dangerouslySetInnerHTML={{ __html: displayStory.content || displayStory.summary }} />
+              <div dangerouslySetInnerHTML={{ __html: displayStory.content || displayStory.summary || "Content coming soon..." }} />
             )}
           </div>
         </div>
@@ -96,7 +96,7 @@ export default async function ImpactStoryPage({ params }: { params: { slug: stri
           <div className="pt-12 mt-12 border-t border-gray-100">
             <span className="text-[10px] tracking-widest uppercase text-ngo-green font-bold block mb-6">In their own words</span>
             <div className="grid gap-4">
-              {displayStory.testimonials.map((t: any, i: number) => (
+              {displayStory.testimonials?.map((t: any, i: number) => (
                 <div key={i} className="bg-ngo-background border-l-2 border-ngo-green p-6 rounded-r-2xl">
                   <p className="text-ngo-text italic mb-3">&quot;{t.quote}&quot;</p>
                   <div className="text-xs font-bold text-ngo-green">— {t.attr}</div>
@@ -109,7 +109,7 @@ export default async function ImpactStoryPage({ params }: { params: { slug: stri
         {/* CTA Section */}
         <div className="mt-16 bg-ngo-background border border-gray-200 rounded-2xl p-8 text-center">
           <h3 className="text-xl font-semibold text-ngo-dark mb-2">Stories like this need your support</h3>
-          <p className="text-sm text-ngo-text mb-8">Every contribution helps us reach more people like {displayStory.name.split(',')[0]}.</p>
+          <p className="text-sm text-ngo-text mb-8">Every contribution helps us reach more people like {displayStory.name?.split(',')[0] || "them"}.</p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/donate" className="bg-ngo-green text-white px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition">
               Donate Now

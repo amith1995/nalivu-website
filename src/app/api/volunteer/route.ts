@@ -12,10 +12,17 @@ export async function POST(req: Request) {
     }
 
     // Create document in Sanity
-    // Note: This requires a write-enabled token if the client is not configured with one
-    // For this implementation, we assume the user will provide a SANITY_API_TOKEN in .env.local
+    const token = process.env.SANITY_API_TOKEN;
+
+    if (!token) {
+      console.error("SANITY_API_TOKEN is not defined in environment variables");
+      return NextResponse.json({ 
+        error: "Server configuration error: Write token missing. Please add SANITY_API_TOKEN to your .env.local file." 
+      }, { status: 500 });
+    }
+
     const result = await client.withConfig({
-      token: process.env.SANITY_API_TOKEN,
+      token: token,
       useCdn: false 
     }).create({
       _type: "volunteerApplication",

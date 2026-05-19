@@ -4,7 +4,6 @@ export default defineType({
   name: 'contactSubmission',
   title: 'Contact Submissions',
   type: 'document',
-  readOnly: true,
   fields: [
     defineField({ name: 'fullName', type: 'string' }),
     defineField({ name: 'email', type: 'string' }),

@@ -4,7 +4,6 @@ export default defineType({
   name: 'volunteerApplication',
   title: 'Volunteer Applications',
   type: 'document',
-  readOnly: true, // Prevent manual editing in Studio
   fields: [
     defineField({ name: 'firstName', type: 'string' }),
     defineField({ name: 'lastName', type: 'string' }),
